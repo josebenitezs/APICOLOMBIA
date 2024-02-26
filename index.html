@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Uso de Fetch</title>
+    <style>
+        body {
+            background-color: beige;
+            color: rgb(15, 15, 15);
+        }
+
+        table thead {
+            background-color: #302b63;
+            color: white;
+        }
+
+        #h {
+
+            color: black;
+        }
+
+        h1 {
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>COLOMBIA</h1>
+    <nav>
+
+        <ul>
+            <li><a href=""></a>Inicio</li>
+            <li><a href="./enlaces/departamento.html">Departamentos</a> </li>
+            <li><a href="./enlaces/regiones.html">Regiones</a></li>
+            <li><a href="./enlaces/ciudades.html">Ciudades</a></li>
+            <li><a href="./enlaces/turismo.html">turismo</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="container mt-4 shadoe-1g p3 mb-5 bg-body rounded">
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+
+
+                <h2 id="h">COLOMBIA</h2>
+                <p>"Colombia, oficialmente la República de Colombia, es un país de América del Sur con regiones
+                    insulares en América del Norte, cerca de la costa caribeña de Nicaragua, así como en el Océano
+                    Pacífico. El territorio continental colombiano limita al norte con el Mar Caribe y al norte con
+                    Venezuela. al este y noreste, Brasil al sureste, Ecuador y Perú al sur y suroeste, el Océano
+                    Pacífico al oeste y Panamá al noroeste. Colombia está dividida en 32 departamentos y el Distrito
+                    Capital de Bogotá, la ciudad más grande del país. Cubre un área de 1.141.748 kilómetros
+                    cuadrados (440.831 millas cuadradas) y tiene una población de 52 millones. El patrimonio
+                    cultural de Colombia, que incluye lengua, religión, cocina y arte, refleja su historia como
+                    colonia española, fusionando elementos culturales traídos por la inmigración. de Europa y Medio
+                    Oriente, con los traídos por africanos esclavizados, así como con los de las diversas
+                    civilizaciones indígenas anteriores a la colonización. El español es el idioma oficial del
+                    estado, aunque el inglés y otros 64 idiomas son idiomas regionales reconocidos."</p>
+
+
+
+            </thead>
+            <tbody id="ur">
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <scrip src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+
+        <script>
+
+            const Url = 'https://api-colombia.com/api/v1/Country/Colombia'
+            fetch(Url)
+                .then(response => response.json())
+                .then(data => mostrarData(data))
+                .catch(error => console.log(error))
+
+            const mostrarData = (ur) => {
+                console.log(ur)
+                let body = ''
+                for (let i = 0; i < ur.length; i++) {
+                    body += `<tr><td>${ur[i].id}</td><td>${ur[i].name}</td><td>${ur[i].description}</td></tr>`
+                }
+                document.getElementById('ur').innerHTML = body
+            }
+
+        </script>
+</body>
+
+</html>
